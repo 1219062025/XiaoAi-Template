@@ -1,6 +1,6 @@
 import { getParams } from '@eyunmy/bridge';
 import { useMainStore } from '@/store/main';
-import lib from '@/lib';
+import { getParameterByName } from '@/lib';
 
 export const clientBridge = async () => {
   const store = useMainStore();
@@ -8,7 +8,7 @@ export const clientBridge = async () => {
   try {
     const data = await getParams();
     const { uid = '', token = '', channel = '', model = '' } = data || {};
-    const { uid: tuid } = lib.getParameterByName(['uid']);
+    const { uid: tuid } = getParameterByName(['uid']);
 
     const isGoogle = channel === 'GooglePlay';
     let isiPhoneX = false;

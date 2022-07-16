@@ -10,6 +10,10 @@ export default ({ mode, command }: ConfigEnv) => {
 
   return defineConfig({
     base: './',
+    build: {
+      // 打包兼容低版本
+      target: 'es2015'
+    },
     resolve: {
       // 设置了路径别名后还需要在tsconfig.json中配置ts中的别名，否则ts无法识别‘@’，虽然不影响代码运行，但是会红色波浪线
       alias: {

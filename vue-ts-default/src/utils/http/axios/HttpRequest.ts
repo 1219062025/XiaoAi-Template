@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 import { useMainStore } from '@/store/main';
-import { isOfficial } from '@/lib';
+import { isTest } from '@/lib';
 
 import NProgress from 'nprogress';
 
@@ -32,7 +32,6 @@ export default class HttpRequest {
   private testHost = 'http://test.ls.xiaoai.live/';
   private host2 = 'https://api.voss.xiaoai.live/';
   private testHost2 = 'http://test.ls.xiaoai.live/voss/';
-  private isTest = !isOfficial();
 
   // 基础配置，url和超时时间
   private readonly baseConfig: AxiosRequestConfig = { baseURL: '/api', timeout: 30000 };
@@ -87,7 +86,7 @@ export default class HttpRequest {
 
   // 定义请求方法
   public get<T = any>(url: string, param?: any): Promise<Result<T>> {
-    const path = `${this.isTest ? this.testHost : this.host}${url}`;
+    const path = `${isTest ? this.testHost : this.host}${url}`;
     return this.instance.get(path, { params: param });
   }
 

@@ -16,8 +16,8 @@ async function bootstrap() {
   // 安装Pinia
   setupStore(app);
 
-  // 初始化与客户端的链接
-  init();
+  // 初始化
+  init(app);
 
   app.mount('#app');
 }

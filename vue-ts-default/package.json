@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@eyunmy/bridge": "^1.1.12",
+    "alife-logger": "^1.8.16",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "fastclick": "^1.0.6",
@@ -26,6 +27,7 @@
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
+    "@vitejs/plugin-legacy": "^2.0.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "cnjm-postcss-px-to-viewport": "^1.0.0",
     "eslint": "^8.19.0",

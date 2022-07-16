@@ -1,8 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import type { PluginOption } from 'vite';
 
-import { configHtmlPlugin } from './html';
-import { configMockPlugin } from './mock';
+import { configHtmlPlugin, configMockPlugin, configLegacyPlugin } from './vitePlugin';
 import { configVConsolePlugin } from './VConsole';
 import { configAutoImportPlugin, configAutoComponentsPlugin } from './unplugin';
 
@@ -11,6 +10,7 @@ export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build', mode
     vue(),
     configHtmlPlugin(env),
     configMockPlugin(command),
+    configLegacyPlugin(),
     configVConsolePlugin(command, mode),
     configAutoImportPlugin(),
     configAutoComponentsPlugin()
