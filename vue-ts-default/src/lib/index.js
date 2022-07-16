@@ -40,43 +40,11 @@ Date.prototype.Format = function (fmt) {
   return fmt;
 };
 
-// axios.defaults.headers['Content-Type'] = {'Content-Type': 'application/json'};
-// axios.defaults.headers['Content-Type'] = {'X-Requested-With': 'XMLHttpRequest'};
 export default {
-  baiduCode: '55a78a9fde09aaf2d202419693378563',
-  host: 'https://api.ls.xiaoai.live/',
-  testHost: 'http://test.ls.xiaoai.live/',
-  host2: 'https://api.voss.xiaoai.live/',
-  testHost2: 'http://test.ls.xiaoai.live/voss/',
-
-  // isTest: false,
   isTest: !isOfficial(),
 
   ua: navigator.userAgent.toLowerCase(),
-  post2(path, param) {
-    const url = `${this.isTest ? this.testHost2 : this.host2}${path}`;
-    const params = param;
 
-    const p = new Promise((resolve, reject) => {
-      axios
-        .post(url, params, {
-          headers: { 'Content-Type': 'text/plain' }
-          // headers: {'Content-Type': 'text/plain;charset=utf-8'},
-          // headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
-        })
-        .then((resp) => {
-          if (resp.status === 200) {
-            resolve(resp.data);
-          } else {
-            reject(new Error('something bad happened', resp));
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-    return p;
-  },
   // 统计函数
   accord(type, action, tag) {
     if (this.isTest) {
@@ -131,20 +99,6 @@ export default {
     }
     return official;
   },
-
-  // // 从地址栏获取参数
-  // getParameterByName(nameList = []) {
-  //   const list = nameList || [];
-  //   const o = {};
-  //   list.forEach((n) => {
-  //     const name = n.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-  //     const regex = new RegExp(`[\\?&]${name}=([^&#]*)`);
-  //     const results = regex.exec(window.location.search);
-  //     const r = results == null ? null : decodeURIComponent(results[1]);
-  //     o[n] = r;
-  //   });
-  //   return o;
-  // },
 
   // 从地址栏获取参数
   getParameterByName(nameList = []) {

@@ -5,7 +5,7 @@ import App from './App.vue';
 import { createApp } from 'vue';
 import { setupRouter } from '@/router';
 import { setupStore } from '@/store';
-import { clientBridge } from '@/utils/logics/clientBridge';
+import { init } from '@/utils/logics';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -17,7 +17,7 @@ async function bootstrap() {
   setupStore(app);
 
   // 初始化与客户端的链接
-  clientBridge();
+  init();
 
   app.mount('#app');
 }

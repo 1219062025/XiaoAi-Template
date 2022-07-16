@@ -1,16 +1,14 @@
 import { getParams } from '@eyunmy/bridge';
 import { useMainStore } from '@/store/main';
-import { getParameterByName } from '@/lib';
-import FastClick from 'fastclick';
-
-const store = useMainStore();
+import lib from '@/lib';
 
 export const clientBridge = async () => {
-  FastClick.attach(document.body);
+  const store = useMainStore();
+
   try {
     const data = await getParams();
     const { uid = '', token = '', channel = '', model = '' } = data || {};
-    const { uid: tuid } = getParameterByName(['uid']);
+    const { uid: tuid } = lib.getParameterByName(['uid']);
 
     const isGoogle = channel === 'GooglePlay';
     let isiPhoneX = false;

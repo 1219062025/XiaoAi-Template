@@ -26,18 +26,25 @@
   |- App.vue
   |- main.ts
 |- types // 类型声明文件夹
+	|- auto-imports.d.ts // 自动导入的API声明文件
+	|- components.d.ts // 自动导入的组件声明文件
+	|- env.d.ts // 全局环境声明文件
+	|- global.d.ts // 全局包声明文件
+|- .env // 开发、测试环境变量
+|- .env.porduction // 生产环境变量
+|- .eslintrc-auto-import.json // eslint对自动导入的配置
 |- .eslintrc.js // eslint配置文件
 |- .gitignore // git提交忽略文件
 |- .lintstagedrc.json // lint-staged配置文件
 |- .prettierrc.js // prettierrc配置文件
 |- .stylelintignore // stylelint忽略文件
 |- .stylelintrc.js // stylelint配置文件
+|- deploy.sh // 自动化部署shell脚本
 |- package-lock.json // 依赖包版本锁定
 |- package.json // 依赖配置文件
 |- index.html
 |- README.md // 说明文件
 |- tsconfig.json // ts主配置文件
-|- tsconfig.node.json // ts子配置文件，子配置文件优先级更高，注意覆盖、应用范围问题
 |- vite.config.ts // vite配置文件
 ```
 
@@ -53,11 +60,19 @@
 
 ### dependenciesd 依赖
 
+`@eyunmy/bridge`：小爱API
+
 `axios`：`http`库
+
+`dayjs`：便捷操纵`Date`对象
+
+`fastclick`： 解决移动端浏览器300ms点击延迟和点击穿透问题
 
 `nprogress`： 进度条
 
 `pinia`：状态管理
+
+`vconsole`：针对手机端的开发调试工具
 
 ### devDependencies 依赖
 
@@ -68,6 +83,8 @@
 `@typescript-eslint/eslint-plugin`：使得`ESLint` 可以校验`typescript`
 
 `@typescript-eslint/parser`：`ESLint` 校验 `typescript` 的规则
+
+`cnjm-postcss-px-to-viewport`： 自动将`px`转化成`vw`库，本体是`postcss-px-to-viewport`，目前安装的包是个人开发者在本体上修改了部分源代码已适配不同设计稿
 
 `eslint`：代码格式校验
 
@@ -98,5 +115,13 @@
 `stylelint-order`：与 `css` 属性顺序相关的插件，支持自定义属性的书写顺序（例如：先写定位属性，再写盒模型），并且能够帮助你自动修正属性的顺序
 
 `stylelint-scss`^3.21.0：`stylelint` 适配 `scss` 预处理语法的插件
+
+`unplugin-auto-import`： 自动导入`API`
+
+`unplugin-vue-components`：自动导入组件
+
+`vite-plugin-html`：`EJS`模板能力，多页应用支持，自定义`entry`，自定义`template`
+
+`vite-plugin-vconsole`：辅助`VConsole`在`vite`上的使用
 
 `vite-plugin-mock`：`vite`的一个`mock`插件，基于`mockjs`开发。并同时支持本地环境和生产环境。本地使用`connect`服务中间件，在线使用`mockjs`
