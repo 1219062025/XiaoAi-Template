@@ -1,0 +1,49 @@
+{
+  "name": "vue-ts",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "deploy": "sh deploy.sh"
+  },
+  "dependencies": {
+    "@eyunmy/bridge": "^1.1.12",
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.3",
+    "fastclick": "^1.0.6",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.16",
+    "vconsole": "^3.14.6",
+    "vue": "^3.2.29",
+    "vue-router": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "cnjm-postcss-px-to-viewport": "^1.0.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "mockjs": "^1.1.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^3.21.0",
+    "typescript": "^4.7.3",
+    "vite": "^2.9.9",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-vconsole": "^1.2.2",
+    "vue-tsc": "^0.35.0"
+  }
+}
