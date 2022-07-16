@@ -5,7 +5,7 @@ import FastClick from 'fastclick';
 
 const store = useMainStore();
 
-export const init = async () => {
+export const clientBridge = async () => {
   FastClick.attach(document.body);
   try {
     const data = await getParams();

@@ -12,7 +12,10 @@ export default ({ mode, command }: ConfigEnv) => {
     base: './',
     resolve: {
       // 设置了路径别名后还需要在tsconfig.json中配置ts中的别名，否则ts无法识别‘@’，虽然不影响代码运行，但是会红色波浪线
-      alias: { '@': path.resolve(__dirname, 'src') }
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+        '@type': path.resolve(__dirname, 'types')
+      }
     },
     plugins: setupPlugin(env, command, mode),
     css: {

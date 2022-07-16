@@ -15,9 +15,9 @@
     // 配置ts编译别名
     "baseUrl": ".", // paths 路径解析起点
     "paths": {
-      "@/*": ["src/*"] // 别名路径设置
+      "@/*": ["src/*"], // 别名路径设置
+      "@type/*": ["types/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts", "vite.config.ts"]
-  // "references": [{ "path": "./tsconfig.node.json" }]
 }

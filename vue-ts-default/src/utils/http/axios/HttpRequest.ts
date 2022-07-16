@@ -8,8 +8,8 @@ import NProgress from 'nprogress';
 
 // 后端接口返回通用格式
 type Result<T> = {
-  code: number;
-  message: string;
+  error_code: number;
+  msg: string;
   data: T;
 };
 
@@ -56,6 +56,7 @@ export default class HttpRequest {
           ...config[key]
         };
         NProgress.start();
+        store.setState('loadingShow', true);
         return config;
       },
       (err: AxiosError) => {
@@ -69,15 +70,16 @@ export default class HttpRequest {
         NProgress.done();
 
         if (res.status !== 200) {
-          store.loadingShow = false;
+          store.setState('loadingShow', false);
           return Promise.resolve(res);
         }
-        store.loadingShow = false;
+        store.setState('loadingShow', false);
         return res.data;
       },
       (err: AxiosError) => {
         NProgress.done();
-        store.loadingShow = false;
+        store.showToast('网络开小差了~');
+        store.setState('loadingShow', false);
         throw new Error(err.message);
       }
     );
