@@ -1,5 +1,4 @@
-const BrowserLogger = require('alife-logger');
-// import BrowserLogger from 'alife-logger';
+import BrowserLogger from 'alife-logger';
 import { isTest } from '@/lib';
 
 // ARMS前端监控

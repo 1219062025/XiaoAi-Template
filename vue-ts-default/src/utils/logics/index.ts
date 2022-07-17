@@ -2,13 +2,13 @@ import type { App } from 'vue';
 import { clientBridge } from './clientBridge';
 import { registerServiceWorker } from './registerServiceWorker';
 import { fastClick } from './fastClick';
-// import { alifeLogger } from './alifeLogger';
+import { alifeLogger } from './alifeLogger';
 
 export function init(app: App<Element>) {
   clientBridge();
   registerServiceWorker();
   fastClick();
-  // alifeLogger();
+  alifeLogger();
 
   app.config.globalProperties.$filters = {
     filterHead(url: string) {

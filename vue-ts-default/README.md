@@ -1,11 +1,8 @@
-# vue-ts
+# vue-ts-default
 
 ## 项目结构
 
 ```
-|- .husky
-  |- _ // husky 配置目录
-  |- pre-commit // 配置git pre-commit钩子函数
 |- .vscode // vscode工作区配置
 |- mock // mock数据处理
 |- public
@@ -35,7 +32,6 @@
 |- .eslintrc-auto-import.json // eslint对自动导入的配置
 |- .eslintrc.js // eslint配置文件
 |- .gitignore // git提交忽略文件
-|- .lintstagedrc.json // lint-staged配置文件
 |- .prettierrc.js // prettierrc配置文件
 |- .stylelintignore // stylelint忽略文件
 |- .stylelintrc.js // stylelint配置文件
@@ -56,11 +52,11 @@
 
 `build`：打包
 
-`prepare`：`husky`初始化
-
 ### dependenciesd 依赖
 
 `@eyunmy/bridge`：小爱API
+
+`alife-logger`：ARMS前端监控
 
 `axios`：`http`库
 
@@ -71,6 +67,8 @@
 `nprogress`： 进度条
 
 `pinia`：状态管理
+
+`register-service-worker`：缓存服务
 
 `vconsole`：针对手机端的开发调试工具
 
@@ -84,6 +82,8 @@
 
 `@typescript-eslint/parser`：`ESLint` 校验 `typescript` 的规则
 
+`@vitejs/plugin-legacy`：`vite`打包兼容低版本浏览器
+
 `cnjm-postcss-px-to-viewport`： 自动将`px`转化成`vw`库，本体是`postcss-px-to-viewport`，目前安装的包是个人开发者在本体上修改了部分源代码已适配不同设计稿
 
 `eslint`：代码格式校验
@@ -93,10 +93,6 @@
 `eslint-config-prettier`： `prettier` 官方提供的一款解决`ESLint` 的规则和 `Prettier` 的规则冲突问题的依赖
 
 `eslint-plugin-vue`： `Vue.js`的官方 `ESLint` 插件
-
-`husky`：操作 `git` 钩子的工具
-
-`lint-staged`：本地暂存代码检查工具
 
 `mockjs`：生成随机数据，拦截 `Ajax`请求，模拟后端请求
 

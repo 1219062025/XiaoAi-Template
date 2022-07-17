@@ -28,7 +28,8 @@ export function configMockPlugin(command: 'serve' | 'build') {
 // 兼容浏览器
 export function configLegacyPlugin() {
   const legacyPlugin = legacy({
-    targets: ['defaults']
+    targets: ['defaults'],
+    additionalLegacyPolyfills: ['regenerator-runtime/runtime']
   });
 
   return legacyPlugin;
