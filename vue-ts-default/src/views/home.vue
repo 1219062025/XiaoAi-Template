@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import { getVptList } from '@/api/main';
+  import { getVptList } from '@/api';
 
   onMounted(async () => {
     const { data } = await getVptList();

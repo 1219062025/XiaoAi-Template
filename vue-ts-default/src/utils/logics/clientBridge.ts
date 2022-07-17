@@ -1,9 +1,9 @@
 import { getParams } from '@eyunmy/bridge';
-import { useMainStore } from '@/store/main';
+import { useStore } from '@/store';
 import { getParameterByName } from '@/lib';
 
 export const clientBridge = async () => {
-  const store = useMainStore();
+  const store = useStore();
 
   try {
     const data = await getParams();

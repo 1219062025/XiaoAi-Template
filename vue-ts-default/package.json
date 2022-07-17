@@ -1,5 +1,5 @@
 {
-  "name": "vue-ts",
+  "name": "vue-ts-default",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -46,6 +46,8 @@
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-vconsole": "^1.2.2",
-    "vue-tsc": "^0.35.0"
+    "vite-plugin-windicss": "^1.8.7",
+    "vue-tsc": "^0.35.0",
+    "windicss": "^3.5.6"
   }
 }

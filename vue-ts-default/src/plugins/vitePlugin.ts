@@ -1,6 +1,7 @@
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { viteMockServe } from 'vite-plugin-mock';
 import legacy from '@vitejs/plugin-legacy';
+import WindiCSS from 'vite-plugin-windicss';
 
 // EJS模板能力
 export function configHtmlPlugin(env: ImportMetaEnv) {
@@ -33,4 +34,11 @@ export function configLegacyPlugin() {
   });
 
   return legacyPlugin;
+}
+
+// WindiCSS原子css
+export function configWindiCSSPlugin() {
+  const windiCSSPlugin = WindiCSS();
+
+  return windiCSSPlugin;
 }

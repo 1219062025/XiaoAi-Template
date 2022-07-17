@@ -16,9 +16,7 @@
   |- plugins // 插件相关
   |- router // 路由相关
   |- sotre // 状态管理相关
-  |- utils // 全局工具函数
-    |- http // http相关
-      |- axios // 封装axios
+  |- utils // 方法、工具
   |- views // 视图
   |- App.vue
   |- main.ts
@@ -42,6 +40,7 @@
 |- README.md // 说明文件
 |- tsconfig.json // ts主配置文件
 |- vite.config.ts // vite配置文件
+|- windi.config.ts // windiCSS配置文件
 ```
 
 ## package.json
@@ -120,4 +119,8 @@
 
 `vite-plugin-vconsole`：辅助`VConsole`在`vite`上的使用
 
+`vite-plugin-windicss`：辅助`windicss`在`vite`上的使用
+
 `vite-plugin-mock`：`vite`的一个`mock`插件，基于`mockjs`开发。并同时支持本地环境和生产环境。本地使用`connect`服务中间件，在线使用`mockjs`
+
+`windicss`：原子`css`，支持在`html`元素上通过定制好的类名来快速实现样式，而不需要自己去定义类名

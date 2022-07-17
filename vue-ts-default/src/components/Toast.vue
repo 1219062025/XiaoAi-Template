@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useMainStore } from '@/store/main';
+  import { useStore } from '@/store';
 
-  const store = useMainStore();
+  const store = useStore();
 </script>
 
 <style scoped lang="scss">

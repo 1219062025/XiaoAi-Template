@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
-import { useMainStore } from '@/store/main';
+import { useStore } from '@/store';
 import { isTest } from '@/lib';
 
 import NProgress from 'nprogress';
@@ -39,7 +39,7 @@ export default class HttpRequest {
   constructor(config?: AxiosRequestConfig) {
     // 使用axios.create创建axios实例
     this.instance = axios.create(Object.assign(this.baseConfig, config));
-    const store = useMainStore();
+    const store = useStore();
 
     // 全局请求拦截
     this.instance.interceptors.request.use(

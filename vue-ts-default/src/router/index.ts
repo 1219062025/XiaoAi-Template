@@ -1,7 +1,16 @@
 import type { App } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import { basicRoutes } from './basic';
+const basicRoutes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/home.vue'),
+    meta: {
+      title: 'Home'
+    }
+  }
+];
 
 export const router = createRouter({
   // 创建一个 hash 历史记录。
