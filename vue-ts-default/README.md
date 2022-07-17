@@ -13,6 +13,7 @@
     |- images // 图像资源
     |- styles // 样式资源
   |- components // 全局组件
+  |- lib // 小爱相关工具函数
   |- plugins // 插件相关
   |- router // 路由相关
   |- sotre // 状态管理相关
@@ -124,3 +125,4 @@
 `vite-plugin-mock`：`vite`的一个`mock`插件，基于`mockjs`开发。并同时支持本地环境和生产环境。本地使用`connect`服务中间件，在线使用`mockjs`
 
 `windicss`：原子`css`，支持在`html`元素上通过定制好的类名来快速实现样式，而不需要自己去定义类名
+
