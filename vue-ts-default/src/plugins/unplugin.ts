@@ -24,6 +24,7 @@ export function configAutoComponentsPlugin() {
   const autoComponentsPlugin = Components({
     // 自动导入后的声明文件存放路径
     dts: 'types/components.d.ts',
+    // 自动按需导入以下组件库
     resolvers: [VantResolver()]
   });
 

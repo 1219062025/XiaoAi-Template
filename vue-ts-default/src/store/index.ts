@@ -19,11 +19,11 @@ type StateKeys = keyof MainStoreState;
 export const useStore = defineStore({
   id: 'main',
   state: (): MainStoreState => ({
-    uid: '14746601', // 14746601 25361515 13731482 16838447 16296671
-    token: 'whosyourdaddy',
+    // uid: '14746601', // 14746601 25361515 13731482 16838447 16296671
+    // token: 'whosyourdaddy',
     // tuid: '12547134',
-    // uid: '',
-    // token: '',
+    uid: '',
+    token: '',
     tuid: '',
     toastMsg: '',
     toastShow: false,

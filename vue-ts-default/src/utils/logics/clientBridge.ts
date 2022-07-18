@@ -15,7 +15,6 @@ export const clientBridge = async () => {
     if (model.indexOf('iPhone1') !== -1) {
       isiPhoneX = true;
     }
-
     tuid && store.setState('tuid', tuid);
     store.setState('uid', uid);
     store.setState('token', token);
