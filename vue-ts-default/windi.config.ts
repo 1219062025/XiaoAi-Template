@@ -18,6 +18,10 @@ export default defineConfig({
         xl: '768px'
       }
     }
+  },
+  shortcuts: {
+    'bg-cover-center': 'bg-center bg-no-repeat bg-cover',
+    'bg-contain-center': 'bg-center bg-no-repeat bg-contain'
   }
 });
 
