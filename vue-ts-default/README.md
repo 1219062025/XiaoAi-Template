@@ -25,7 +25,7 @@
 	|- components.d.ts // 自动导入的组件声明文件
 	|- env.d.ts // 全局环境声明文件
 	|- global.d.ts // 全局包声明文件
-|- .env // 开发、测试环境变量
+|- .env // 全局环境变量
 |- .env.porduction // 生产环境变量
 |- .eslintrc-auto-import.json // eslint对自动导入的配置
 |- .eslintrc.js // eslint配置文件
@@ -99,6 +99,8 @@
 
 > 在使用 vscode 编辑器时，下载 prettier 扩展
 
+`rollup-plugin-visualizer`“：打包可视化分析器
+
 `sass`： `sass`预处理器，不安装的话无法在项目中使用`scss`语法
 
 `stylelint`^13.13.1：`css`代码格式校验，安装指定 13.13.1 版本，不然报错
@@ -118,6 +120,8 @@
 `vite-plugin-html`：`EJS`模板能力，多页应用支持，自定义`entry`，自定义`template`
 
 `vite-plugin-vconsole`：辅助`VConsole`在`vite`上的使用
+
+`vite-plugin-progress`：打包进度条展示
 
 `vite-plugin-windicss`：辅助`windicss`在`vite`上的使用
 
