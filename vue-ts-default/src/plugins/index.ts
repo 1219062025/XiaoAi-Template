@@ -4,8 +4,8 @@ import type { PluginOption } from 'vite';
 import {
   configHtmlPlugin,
   configMockPlugin,
-  configLegacyPlugin,
   configWindiCSSPlugin,
+  configBuildProgressPlugin,
   configVConsolePlugin
 } from './vitePlugin';
 import { configAutoImportPlugin, configAutoComponentsPlugin } from './unplugin';
@@ -17,8 +17,8 @@ export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build', mode
     vue(),
     configHtmlPlugin(env),
     configMockPlugin(command),
-    configLegacyPlugin(),
     configWindiCSSPlugin(),
+    configBuildProgressPlugin(),
     configVConsolePlugin(command, mode),
     configAutoImportPlugin(),
     configAutoComponentsPlugin(),
