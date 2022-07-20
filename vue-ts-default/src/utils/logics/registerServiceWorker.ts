@@ -1,7 +1,8 @@
 import { register } from 'register-service-worker';
+import { isTest } from '@/utils';
 
 export const registerServiceWorker = () => {
-  if (import.meta.env.MODE === 'production') {
+  if (!isTest) {
     register(`${import.meta.env.BASE_URL}service-worker.js`, {
       ready() {
         console.log(

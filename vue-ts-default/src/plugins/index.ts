@@ -12,14 +12,14 @@ import { configAutoImportPlugin, configAutoComponentsPlugin } from './unplugin';
 // 打包分析器，输出stats.html到根目录下
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build', mode: string) {
+export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
   const vitePlugins: PluginOption[] = [
     vue(),
     configHtmlPlugin(env),
     configMockPlugin(command),
     configWindiCSSPlugin(),
     configBuildProgressPlugin(),
-    configVConsolePlugin(command, mode),
+    configVConsolePlugin(command),
     configAutoImportPlugin(),
     configAutoComponentsPlugin(),
     visualizer({

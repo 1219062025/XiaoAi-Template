@@ -21,7 +21,7 @@ export default ({ mode, command }: ConfigEnv) => {
         '#': path.resolve(__dirname, 'types')
       }
     },
-    plugins: setupPlugin(env, command, mode),
+    plugins: setupPlugin(env, command),
     css: {
       postcss: {
         plugins: [
