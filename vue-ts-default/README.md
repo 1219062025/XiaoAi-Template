@@ -13,7 +13,6 @@
     |- images // 图像资源
     |- styles // 样式资源
   |- components // 全局组件
-  |- lib // 小爱相关工具函数
   |- plugins // 插件相关
   |- router // 路由相关
   |- sotre // 状态管理相关

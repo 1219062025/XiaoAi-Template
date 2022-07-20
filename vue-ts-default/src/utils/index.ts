@@ -7,7 +7,6 @@ export const isTest = !isOfficial();
 
 // 判断是否是线上
 export function isOfficial() {
-  let official = true;
   const url = window.location.href;
   const t =
     url.indexOf('http://localhost') > -1 ||
@@ -15,9 +14,7 @@ export function isOfficial() {
     url.indexOf('http://192.168') > -1 ||
     url.indexOf('https://192.168') > -1 ||
     url.indexOf('/LoveshowTest/') > -1;
-  if (t) {
-    official = false;
-  }
+  const official = !t;
 
   return official;
 }

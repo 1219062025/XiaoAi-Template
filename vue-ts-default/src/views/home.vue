@@ -1,9 +1,7 @@
 <template>
-  <div class="bg-cover-center">x1000</div>
+  <div class="flex-center">x1000</div>
 </template>
 
-<script setup lang="ts">
-  console.log($filters);
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss"></style>

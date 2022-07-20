@@ -2,13 +2,14 @@ import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 import { useStore } from '@/store';
-import { isTest } from '@/lib';
+import { isTest } from '@/utils';
 
 import NProgress from 'nprogress';
 
 // 后端接口返回通用格式
 type Result<T> = {
-  error_code: number;
+  error_code?: number;
+  code?: number;
   msg: string;
   data: T;
 };

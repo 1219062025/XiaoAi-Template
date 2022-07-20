@@ -1,5 +1,5 @@
 import BrowserLogger from 'alife-logger';
-import { isTest } from '@/lib';
+import { isTest } from '@/utils';
 
 // ARMS前端监控
 export const alifeLogger = () => {

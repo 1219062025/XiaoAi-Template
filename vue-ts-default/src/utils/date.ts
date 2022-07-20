@@ -13,8 +13,7 @@ type DifferenceTime = {
 
 type DifferenceKeys = keyof DifferenceTime;
 
-export function differTime(endTime: number, startTime?: number): DifferenceTime {
-  if (!startTime) startTime = Date.now();
+export function differTime(endTime: number, startTime: number = Date.now()): DifferenceTime {
   const isReversion = startTime > endTime;
   const _D: DifferenceTime = {
     year: 0,
@@ -27,9 +26,23 @@ export function differTime(endTime: number, startTime?: number): DifferenceTime 
     millisecond: 0
   };
   Object.keys(_D).forEach((key) => {
-    const v = isReversion
-      ? dayjs(startTime).diff(endTime, key as DifferenceKeys)
-      : dayjs(endTime).diff(startTime, key as DifferenceKeys);
+    let v = 0;
+    const d = Math.abs(endTime - startTime);
+    switch (key) {
+      case 'hour':
+        v = Math.floor((d % (24 * 3600 * 1000)) / (3600 * 1000));
+        break;
+      case 'minute':
+        v = Math.floor(((d % (24 * 3600 * 1000)) % (3600 * 1000)) / (60 * 1000));
+        break;
+      case 'second':
+        v = Math.floor((((d % (24 * 3600 * 1000)) % (3600 * 1000)) % (60 * 1000)) / 1000);
+        break;
+      default:
+        v = isReversion
+          ? dayjs(startTime).diff(endTime, key as DifferenceKeys)
+          : dayjs(endTime).diff(startTime, key as DifferenceKeys);
+    }
     _D[key as DifferenceKeys] = v;
   });
   return _D;

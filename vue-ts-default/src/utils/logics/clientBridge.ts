@@ -1,6 +1,6 @@
 import { getParams } from '@eyunmy/bridge';
 import { useStore } from '@/store';
-import { getParameterByName } from '@/lib';
+import { getParameterByName } from '@/utils';
 import type { Params } from '@eyunmy/bridge/types';
 
 export const clientBridge = async () => {

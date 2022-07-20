@@ -20,6 +20,8 @@ export default defineConfig({
     }
   },
   shortcuts: {
+    'position-center': 'absolute top-[50%] left-[50%] transform  translate-x-[-50%] translate-y-[-50%]',
+    'flex-center': 'flex justify-center items-center',
     'bg-cover-center': 'bg-center bg-no-repeat bg-cover',
     'bg-contain-center': 'bg-center bg-no-repeat bg-contain'
   }
