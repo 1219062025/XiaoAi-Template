@@ -3,21 +3,7 @@ export const isIOS = /ip(hone|od|ad)/i.test(ua);
 export const isAndroid = /android/i.test(ua);
 export const isQQ = /QQ/i.test(ua);
 export const isWeixin = /micromessenger/.test(ua.toLowerCase());
-export const isTest = !isOfficial();
-
-// 判断是否是线上
-export function isOfficial() {
-  const url = window.location.href;
-  const t =
-    url.indexOf('http://localhost') > -1 ||
-    url.indexOf('https://localhost') > -1 ||
-    url.indexOf('http://192.168') > -1 ||
-    url.indexOf('https://192.168') > -1 ||
-    url.indexOf('/LoveshowTest/') > -1;
-  const official = !t;
-
-  return official;
-}
+export const isTest = import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_NODE_ENV === 'test' : true;
 
 // 判断在什么设备上运行 android-安卓 ios-苹果 out-非App上
 export function inApp() {

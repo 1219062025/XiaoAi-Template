@@ -49,7 +49,13 @@
 
 `dev`：启动项目
 
-`build`：打包
+`build`：打包生产环境
+
+`build:test`：打包测试环境
+
+`deploy`：打包生产环境并自动化部署到线上
+
+`deploy:test`：打包生产环境并自动化部署到测试线上
 
 ### dependenciesd 依赖
 

@@ -1,8 +1,6 @@
 import BrowserLogger from 'alife-logger';
 import { isTest } from '@/utils';
 
-console.log(import.meta.env);
-
 // ARMS前端监控
 export const alifeLogger = () => {
   let __bl: any;

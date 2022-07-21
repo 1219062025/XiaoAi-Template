@@ -5,7 +5,6 @@ import WindiCSS from 'vite-plugin-windicss';
 import progress from 'vite-plugin-progress';
 import { viteVConsole } from 'vite-plugin-vconsole';
 
-// import { isTest } from '../utils';
 const path = require('path');
 
 // EJS模板能力
@@ -42,18 +41,18 @@ export function configWindiCSSPlugin() {
 }
 
 // 打包时展示进度条
-export function configBuildProgressPlugin() {
+export function configBuildProgressPlugin(env: ImportMetaEnv) {
   return progress({
-    format: 'Building [:bar] Transforms: :current/:total | Times: :elapseds | Rate: :rate/s'
+    format: `The ${env.VITE_NODE_ENV} Building: :percent | \u2705Transforms: :current/:total | \u231BTimes: :elapseds | \u2728Rate: :rate/s`
   });
 }
 
 // 针对手机端的开发调试工具
-export function configVConsolePlugin(command: 'serve' | 'build') {
+export function configVConsolePlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
   return viteVConsole({
-    entry: path.resolve('src/main.ts'), // 或者可以使用这个配置: [path.resolve('src/main.ts')]
+    entry: path.resolve('src/main.ts'),
     localEnabled: command === 'serve', // serve开发环境下
-    enabled: command !== 'serve', // 打包环境下/发布测试包
+    enabled: env.VITE_NODE_ENV === 'test', // 测试环境下
     config: {
       maxLogNumber: 1000,
       theme: 'light'

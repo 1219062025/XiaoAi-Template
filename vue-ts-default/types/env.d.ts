@@ -9,6 +9,7 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string;
+  readonly VITE_NODE_ENV: 'test' | 'production';
   readonly NODE_ENV: string;
   readonly BACKUP_PATH: string;
   readonly DEPLOY_PATH: string;

@@ -7,11 +7,9 @@ MODE=$1
 
 if [[ $MODE = 'test' ]];
 then
-  echo '测试'
-  # npm run build:test
-  # echo 'FunGoj86p,s' | deploy
+  npm run build:test
+  echo 'FunGoj86p,s' | deploy
 else [ !$MODE ]
-  echo '生产'
-  # npm run build
-  # echo 'FunGoj86p,s' | deploy production
+  npm run build
+  echo 'FunGoj86p,s' | deploy production
 fi

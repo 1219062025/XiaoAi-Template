@@ -4,12 +4,13 @@ import type { PluginOption } from 'vite';
 import {
   configHtmlPlugin,
   configMockPlugin,
+  configLegacyPlugin,
   configWindiCSSPlugin,
   configBuildProgressPlugin,
   configVConsolePlugin
 } from './vitePlugin';
 import { configAutoImportPlugin, configAutoComponentsPlugin } from './unplugin';
-// 打包分析器，输出stats.html到根目录下
+// 打包分析器，进行打包后会输出stats.html到根目录下
 import { visualizer } from 'rollup-plugin-visualizer';
 
 export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
@@ -18,14 +19,18 @@ export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
     configHtmlPlugin(env),
     configMockPlugin(command),
     configWindiCSSPlugin(),
-    configBuildProgressPlugin(),
-    configVConsolePlugin(command),
+    configBuildProgressPlugin(env),
+    configVConsolePlugin(env, command),
     configAutoImportPlugin(),
     configAutoComponentsPlugin(),
     visualizer({
       gzipSize: true
     })
   ];
+
+  if (env.VITE_NODE_ENV === 'production') {
+    vitePlugins.push(configLegacyPlugin());
+  }
 
   return vitePlugins;
 }
