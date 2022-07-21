@@ -3,10 +3,15 @@
 # 确保脚本抛出遇到的错误
 set -e
 
-# 生成静态文件
-npm run build
+MODE=$1
 
-
-#输入密码并发布到测试环境
-# echo 'FunGoj86p,s' | deploy production
-echo 'FunGoj86p,s' | deploy
+if [[ $MODE = 'test' ]];
+then
+  echo '测试'
+  # npm run build:test
+  # echo 'FunGoj86p,s' | deploy
+else [ !$MODE ]
+  echo '生产'
+  # npm run build
+  # echo 'FunGoj86p,s' | deploy production
+fi
