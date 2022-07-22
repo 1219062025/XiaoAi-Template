@@ -3,7 +3,13 @@ export const isIOS = /ip(hone|od|ad)/i.test(ua);
 export const isAndroid = /android/i.test(ua);
 export const isQQ = /QQ/i.test(ua);
 export const isWeixin = /micromessenger/.test(ua.toLowerCase());
-export const isTest = import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_NODE_ENV === 'test' : true;
+export const isTestEnv = import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_NODE_ENV === 'test' : true;
+
+// 模拟vue2 require函数功能
+export const resolveImport = (url: string) => {
+  const [path, ext] = url.split('@/')[1].split('.');
+  return new URL(`../../${path}.${ext}`, import.meta.url).href;
+};
 
 // 判断在什么设备上运行 android-安卓 ios-苹果 out-非App上
 export function inApp() {

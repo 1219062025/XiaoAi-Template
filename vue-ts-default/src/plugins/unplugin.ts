@@ -6,10 +6,15 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 
 export function configAutoImportPlugin() {
   const autoImportPlugin = AutoImport({
-    // 自动导入库下的API导出
-    imports: ['vue', 'vue-router'],
-    // 自动导入目录下的所有模块导出
-    dirs: ['@/store'],
+    // 自动导入模块下的API导出
+    imports: [
+      'vue',
+      'vue-router',
+      {
+        '/src/store/index.ts': ['useStore'],
+        '/src/utils/date.ts': ['differTime']
+      }
+    ],
     // 自动导入后的声明文件存放路径
     dts: 'types/auto-imports.d.ts',
     eslintrc: {

@@ -13,7 +13,12 @@ type DifferenceTime = {
 
 type DifferenceKeys = keyof DifferenceTime;
 
-export function differTime(endTime: number, startTime: number = Date.now()): DifferenceTime {
+interface fun {
+  (endTime: number, startTime: number): DifferenceTime;
+}
+
+export const differTime: fun = (endTime: number, startTime: number = Date.now()): DifferenceTime => {
+  // export function differTime(endTime: number, startTime: number = Date.now()): DifferenceTime {
   const isReversion = startTime > endTime;
   const _D: DifferenceTime = {
     year: 0,
@@ -46,7 +51,7 @@ export function differTime(endTime: number, startTime: number = Date.now()): Dif
     _D[key as DifferenceKeys] = v;
   });
   return _D;
-}
+};
 
 // 数字补足, 如: 2 -> '02', 10 -> '10'
 export const num2Digit = (num: number | string): string => (Number(num) >= 10 ? `${num}` : `0${num}`);

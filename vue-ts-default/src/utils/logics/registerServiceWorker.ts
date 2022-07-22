@@ -1,8 +1,8 @@
 import { register } from 'register-service-worker';
-import { isTest } from '@/utils';
+import { isTestEnv } from '@/utils';
 
 export const registerServiceWorker = () => {
-  if (!isTest) {
+  if (!isTestEnv) {
     register(`${import.meta.env.BASE_URL}service-worker.js`, {
       ready() {
         console.log(
