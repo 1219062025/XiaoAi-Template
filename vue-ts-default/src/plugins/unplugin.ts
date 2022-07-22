@@ -7,18 +7,11 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 export function configAutoImportPlugin() {
   const autoImportPlugin = AutoImport({
     // 自动导入模块下的API导出
-    imports: [
-      'vue',
-      'vue-router',
-      {
-        '/src/store/index.ts': ['useStore'],
-        '/src/utils/date.ts': ['differTime']
-      }
-    ],
+    imports: ['vue', 'vue-router'],
     // 自动导入后的声明文件存放路径
     dts: 'types/auto-imports.d.ts',
     eslintrc: {
-      enabled: true, // 默认为false，先设置为true后保存一次，会自动生成filepath指定路径的json文件，然后设回false。需要更新时再设置true
+      enabled: false, // 默认为false，先设置为true后保存一次，会自动生成filepath指定路径的json文件，然后设回false。需要更新时再设置true
       filepath: '.eslintrc-auto-import.json'
     }
   });
