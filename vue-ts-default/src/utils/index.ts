@@ -11,6 +11,57 @@ export const resolveImport = (url: string) => {
   return new URL(`../../${path}.${ext}`, import.meta.url).href;
 };
 
+/**
+ *
+ * @param node 目标DOM节点
+ * @param type 字符串类型，Element.classList的属性
+ * @param className 字符串类型。多个类名用空格隔开
+ */
+export function handleClassList(node: HTMLElement, type: keyof DOMTokenList, className: string) {
+  const _classList = className.split(/\s+/);
+  if (_classList.length !== 1) {
+    _classList.forEach((name) => {
+      (node.classList as any)[type](name);
+    });
+  } else {
+    (node.classList as any)[type](className);
+  }
+}
+
+/**
+ * 在动画结束之后执行回调
+ * @param node: 目标DOM节点
+ * @param callBack: 目标节点动画结束后的回调函数
+ * @returns Promise<void>
+ */
+export function animationendPromise(node: HTMLElement, callBack?: () => any) {
+  return new Promise<void>((resolve) => {
+    // 动画未结束不能再次点击节点，以免造成在动画结束前就把事件处理程序清除了
+    node.style.pointerEvents = 'none';
+    const EventHandler = async () => {
+      if (callBack) await callBack();
+      node.removeEventListener('animationend', EventHandler);
+      node.style.pointerEvents = 'auto';
+      resolve();
+    };
+    node.addEventListener('animationend', EventHandler);
+    // 动画意外结束时进行处理
+    node.addEventListener('animationcancel', () => {
+      node.removeEventListener('animationend', EventHandler);
+      node.style.pointerEvents = 'auto';
+    });
+  });
+}
+
+export function transitionPromise(node: HTMLElement, callBack: () => any) {
+  return new Promise<void>((resolve) => {
+    node.addEventListener('transitionend', async () => {
+      await callBack();
+      resolve();
+    });
+  });
+}
+
 // 判断在什么设备上运行 android-安卓 ios-苹果 out-非App上
 export function inApp() {
   if (isAndroid && window.loveshow) {

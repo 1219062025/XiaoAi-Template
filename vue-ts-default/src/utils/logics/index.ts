@@ -4,6 +4,15 @@ import { registerServiceWorker } from './registerServiceWorker';
 import { fastClick } from './fastClick';
 import { alifeLogger } from './alifeLogger';
 
+// 定义了全局方法之后需要扩充类型
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    $filters: {
+      filterHead: (url: string) => string;
+    };
+  }
+}
+
 export function init(app: App<Element>) {
   clientBridge();
   registerServiceWorker();
