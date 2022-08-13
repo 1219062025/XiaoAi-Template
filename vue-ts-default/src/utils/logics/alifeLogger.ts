@@ -5,7 +5,6 @@ import { isTestEnv } from '@/utils';
 export const alifeLogger = () => {
   let __bl: any;
   const num = Math.floor(Math.random() * 100 + 1);
-
   if (!isTestEnv && num > 95) {
     __bl = BrowserLogger.singleton({
       pid: 'dp5p0pay1c@daa49d1f1ca5941',

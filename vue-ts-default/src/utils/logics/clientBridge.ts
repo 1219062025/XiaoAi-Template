@@ -16,11 +16,11 @@ export const clientBridge = async () => {
     if (model.indexOf('iPhone1') !== -1) {
       isiPhoneX = true;
     }
-    store.setState('tuid', tuid);
-    store.setState('uid', uid);
-    store.setState('token', token);
-    store.setState('isiPhoneX', isiPhoneX);
-    store.setState('isGoogle', isGoogle);
+    store.tuid = tuid;
+    store.uid = uid;
+    store.token = token;
+    store.isiPhoneX = isiPhoneX;
+    store.isGoogle = isGoogle;
   } catch (error) {
     console.log('Not on the client. Ignore this information in the test environment');
   }

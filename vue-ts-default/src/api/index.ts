@@ -1,8 +1,8 @@
 import service from '@/utils/http/axios';
-import { VptListModel } from './model/mainModel';
+import { Template } from '#/index';
 
 enum Api {
-  VPT_LIST = '/server/v1/magicHouse/getVptList'
+  GET_TEMPLATE = '/server/v1/vue_ts_default/template'
 }
 
-export const getVptList = () => service.get<VptListModel>(Api.VPT_LIST);
+export const getTemplateList = () => service.domainGet<Template[]>(Api.GET_TEMPLATE);

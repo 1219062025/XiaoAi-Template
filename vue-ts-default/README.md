@@ -15,7 +15,7 @@
   |- components // 全局组件
   |- plugins // 插件相关
   |- router // 路由相关
-  |- sotre // 状态管理相关
+  |- store // 状态管理相关
   |- utils // 方法、工具
   |- views // 视图
   |- App.vue
@@ -49,27 +49,25 @@
 
 `dev`：启动项目
 
-`build`：打包生产环境
+`build`：打包测试环境
 
-`build:test`：打包测试环境
+`build:pro`：打包生产环境
 
-`deploy`：打包生产环境并自动化部署到线上
+`deploy`：打包测试环境并自动化部署到线上
 
-`deploy:test`：打包生产环境并自动化部署到测试线上
+`deploy:pro`：打包生产环境并自动化部署到测试线上
 
 ### dependenciesd 依赖
 
-`@eyunmy/bridge`：小爱API
+`@eyunmy/bridge`：小爱 API
 
-`alife-logger`：ARMS前端监控
+`alife-logger`：ARMS 前端监控
 
 `axios`：`http`库
 
 `dayjs`：便捷操纵`Date`对象
 
-`fastclick`： 解决移动端浏览器300ms点击延迟和点击穿透问题
-
-`nprogress`： 进度条
+`fastclick`： 解决移动端浏览器 300ms 点击延迟和点击穿透问题
 
 `pinia`：状态管理
 
@@ -80,8 +78,6 @@
 ### devDependencies 依赖
 
 `@types/node`：`node.js`的`typescript`声明包
-
-`@types/nprogress`：`nprogress.js`的`typescript`声明包
 
 `@typescript-eslint/eslint-plugin`：使得`ESLint` 可以校验`typescript`
 
@@ -134,4 +130,3 @@
 `vite-plugin-mock`：`vite`的一个`mock`插件，基于`mockjs`开发。并同时支持本地环境和生产环境。本地使用`connect`服务中间件，在线使用`mockjs`
 
 `windicss`：原子`css`，支持在`html`元素上通过定制好的类名来快速实现样式，而不需要自己去定义类名
-

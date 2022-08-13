@@ -1,7 +1,7 @@
 import { defineConfig } from 'windicss/helpers';
 
 export default defineConfig({
-  plugins: [ellipsisPlugin(['hover'])],
+  plugins: [ellipsisPlugin(['hover']), configUtilities()],
   theme: {
     truncate: {
       lines: {
@@ -16,16 +16,27 @@ export default defineConfig({
         md: '414px',
         lg: '640px',
         xl: '768px'
+      },
+      backgroundSize: {
+        'full': '100% 100%'
+      },
+      fontFamily: {
+        Alibaba: ['Alibaba PuHuiTi']
       }
     }
   },
   shortcuts: {
-    'position-center': 'absolute top-[50%] left-[50%] transform  translate-x-[-50%] translate-y-[-50%]',
-    'position-x-center': 'absolute left-[50%] transform  translate-x-[-50%]',
+    'position-center': 'absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]',
+    'position-x-center': 'absolute left-[50%] transform translate-x-[-50%]',
+    'position-y-center': 'absolute top-[50%] transform translate-y-[-50%]',
     'flex-center': 'flex justify-center items-center',
     'flex-x-center': 'flex justify-center',
+    'flex-y-center': 'flex items-center',
     'bg-cover-center': 'bg-center bg-no-repeat bg-cover',
-    'bg-contain-center': 'bg-center bg-no-repeat bg-contain'
+    'bg-contain-center': 'bg-center bg-no-repeat bg-contain',
+    'bg-full-center': 'bg-center bg-no-repeat bg-full',
+    'single-ellipsis': 'whitespace-nowrap overflow-hidden overflow-ellipsis',
+    'click-active': 'transform active:scale-90 duration-[.2s]'
   }
 });
 
@@ -51,5 +62,20 @@ function ellipsisPlugin(variants: string[] = []) {
     }));
 
     addUtilities(utilities, variants);
+  };
+}
+
+function configUtilities() {
+  return ({ addUtilities }) => {
+    const utilities = {
+      '.no-scrollbar': {
+        'scrollbar-width': 'none',
+        '-ms-overflow-style': 'none',
+        '&::-webkit-scrollbar': {
+          display: 'none'
+        }
+      }
+    };
+    addUtilities(utilities);
   };
 }

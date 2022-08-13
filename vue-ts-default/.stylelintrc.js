@@ -1,7 +1,13 @@
 module.exports = {
-  extends: ['stylelint-config-standard'],
+  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   plugins: ['stylelint-order'],
   rules: {
+    'declaration-block-trailing-semicolon': [
+      'always',
+      {
+        ignore: ['single-declaration']
+      }
+    ],
     'selector-pseudo-class-no-unknown': [
       true,
       {

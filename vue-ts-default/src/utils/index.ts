@@ -5,19 +5,23 @@ export const isQQ = /QQ/i.test(ua);
 export const isWeixin = /micromessenger/.test(ua.toLowerCase());
 export const isTestEnv = import.meta.env.VITE_NODE_ENV ? import.meta.env.VITE_NODE_ENV === 'test' : true;
 
-// 模拟vue2 require函数功能
-export const resolveImport = (url: string) => {
-  const [path, ext] = url.split('@/')[1].split('.');
-  return new URL(`../../${path}.${ext}`, import.meta.url).href;
-};
+/**
+ * @param {String} path 图像资源路径
+ * @param {String} ext 后缀
+ */
+export function getAssetsImages(path: string, ext = 'png') {
+  const instace = new URL(`/src/assets/images/${path}.${ext}`, import.meta.url);
+  return instace.href;
+}
 
 /**
  *
- * @param node 目标DOM节点
- * @param type 字符串类型，Element.classList的属性
- * @param className 字符串类型。多个类名用空格隔开
+ * @param {HTMLElement} node 目标DOM节点
+ * @param {String} type 字符串类型，Element.classList的属性
+ * @param {String} className 字符串类型。多个类名用空格隔开
  */
 export function handleClassList(node: HTMLElement, type: keyof DOMTokenList, className: string) {
+  if (!node) return;
   const _classList = className.split(/\s+/);
   if (_classList.length !== 1) {
     _classList.forEach((name) => {
@@ -29,20 +33,50 @@ export function handleClassList(node: HTMLElement, type: keyof DOMTokenList, cla
 }
 
 /**
+ *
+ * @param {HTMLElement} node 目标DOM节点
+ * @param {String} className 字符串类型。多个类名用空格隔开
+ * @returns true: 目标节点有指定类名 false：目标节点无指定类名
+ */
+export function hasClass(node: HTMLElement, className: string): boolean {
+  let isHas = false;
+  const _classList = className.split(/\s+/);
+  for (let i = 0; i < _classList.length; i++) {
+    if (!_classList[i]) break;
+    isHas = ` ${node.className} `.indexOf(` ${_classList[i]} `) !== -1;
+    if (!isHas) break;
+  }
+  return isHas;
+}
+
+/**
  * 在动画结束之后执行回调
- * @param node: 目标DOM节点
- * @param callBack: 目标节点动画结束后的回调函数
+ * @param {HTMLElement} node: 目标DOM节点
+ * @param {Number} delay: 延时结束，单位为毫秒
+ * @param {Function} callBack: 目标节点动画结束后的回调函数
  * @returns Promise<void>
  */
-export function animationendPromise(node: HTMLElement, callBack?: () => any) {
+export function animationendPromise(node: HTMLElement, delay?: number): Promise<void>;
+export function animationendPromise(node: HTMLElement, callBack?: () => any): Promise<void>;
+export function animationendPromise(node: HTMLElement, param?: (() => any) | number) {
   return new Promise<void>((resolve) => {
+    if (!node) return;
     // 动画未结束不能再次点击节点，以免造成在动画结束前就把事件处理程序清除了
     node.style.pointerEvents = 'none';
-    const EventHandler = async () => {
-      if (callBack) await callBack();
+    const removeEvent = () => {
       node.removeEventListener('animationend', EventHandler);
       node.style.pointerEvents = 'auto';
       resolve();
+    };
+    const EventHandler = async () => {
+      if (param && typeof param === 'number') {
+        setTimeout(() => removeEvent(), param);
+      } else if (param) {
+        await (param as () => any)();
+        removeEvent();
+      } else {
+        removeEvent();
+      }
     };
     node.addEventListener('animationend', EventHandler);
     // 动画意外结束时进行处理
@@ -71,6 +105,18 @@ export function inApp() {
     return 'ios';
   }
   return 'out';
+}
+
+/**
+ * 判断IOS异形屏
+ * @returns
+ */
+export function isIphoneX() {
+  if (typeof window !== 'undefined' && window) {
+    const faultTolerantVal = 10; // 容错值
+    return /iphone/gi.test(window.navigator.userAgent) && window.screen.height + faultTolerantVal >= 812;
+  }
+  return false;
 }
 
 // 直播间、用户详情页、微信H5播放页面跳转

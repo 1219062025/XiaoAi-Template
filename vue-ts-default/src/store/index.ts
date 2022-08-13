@@ -1,6 +1,5 @@
 import type { App } from 'vue';
-import { createPinia } from 'pinia';
-import { defineStore } from 'pinia';
+import { createPinia, defineStore } from 'pinia';
 
 interface MainStoreState {
   uid: string | number;
@@ -8,7 +7,7 @@ interface MainStoreState {
   tuid: string;
   toastMsg: string;
   toastShow: boolean;
-  loadingShow: boolean;
+  loadingShow: boolean; // 加载中蒙层是否打开
   isiPhoneX?: boolean;
   isGoogle?: boolean;
   setTime?: any;
@@ -19,11 +18,11 @@ type StateKeys = keyof MainStoreState;
 export const useStore = defineStore({
   id: 'main',
   state: (): MainStoreState => ({
-    // uid: '14746601', // 14746601 25361515 13731482 16838447 16296671
-    // token: 'whosyourdaddy',
+    uid: '14746601', // 14746601 25361515 13731482 16838447 16296671
+    token: 'whosyourdaddy',
     // tuid: '12547134',
-    uid: '',
-    token: '',
+    // uid: '',
+    // token: '',
     tuid: '',
     toastMsg: '',
     toastShow: false,

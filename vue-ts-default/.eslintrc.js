@@ -21,6 +21,8 @@ module.exports = {
   },
   'plugins': ['vue', '@typescript-eslint'],
   'rules': {
+    // 关闭vue的事件监听v-on必须用连字符校验
+    'vue/v-on-event-hyphenation': 'off',
     // 关闭vue单文件名必须为多字校验
     'vue/multi-word-component-names': 'off',
     // 关闭vue自定义组件标签内容为空时需要自闭合校验

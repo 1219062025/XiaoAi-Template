@@ -4,12 +4,9 @@ import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } fro
 import { useStore } from '@/store';
 import { isTestEnv } from '@/utils';
 
-import NProgress from 'nprogress';
-
 // 后端接口返回通用格式
 type Result<T> = {
-  error_code?: number;
-  code?: number;
+  error_code: number;
   msg: string;
   data: T;
 };
@@ -55,8 +52,7 @@ export class HttpRequest {
           token,
           ...config[key]
         };
-        NProgress.start();
-        store.setState('loadingShow', true);
+        store.loadingShow = true;
         return config;
       },
       (err: AxiosError) => {
@@ -67,19 +63,16 @@ export class HttpRequest {
     // 全局响应拦截
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        NProgress.done();
-
         if (res.status !== 200) {
-          store.setState('loadingShow', false);
+          store.loadingShow = false;
           return Promise.resolve(res);
         }
-        store.setState('loadingShow', false);
+        store.loadingShow = false;
         return res.data;
       },
       (err: AxiosError) => {
-        NProgress.done();
         store.showToast('网络开小差了~');
-        store.setState('loadingShow', false);
+        store.loadingShow = false;
         throw new Error(err.message);
       }
     );
@@ -93,6 +86,11 @@ export class HttpRequest {
 
   public post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<Result<T>> {
     return this.instance.post(url, data, config);
+  }
+
+  // 第三方接口或者mock用
+  public domainGet<T = any>(url: string, param?: any): Promise<Result<T>> {
+    return this.instance.get(url, { params: param });
   }
 }
 

@@ -1,31 +1,27 @@
 import { MockMethod } from 'vite-plugin-mock';
+import { Random } from 'mockjs';
 
-const accountList = (() => {
+const templateList = (() => {
   const result: any[] = [];
   for (let index = 0; index < 20; index++) {
-    result.push({
-      id: `${index}`,
-      account: '@first',
-      email: '@email',
-      nickname: '@cname()',
-      'role|1': ['管理员', '开发', '用户'],
-      createTime: '@datetime',
-      remark: '@cword(10,20)',
-      'status|1': ['0', '1']
-    });
+    const item: Record<string, any> = {};
+    item.id = Random.id();
+    item.nick = Random.cname();
+    item.headUrl = Random.image('100x100', '#50B347', '#FFF', 'test');
+    result.push(item);
   }
   return result;
 })();
 
 export default [
   {
-    url: '/account/getAccountList',
+    url: '/server/v1/vue_ts_default/template',
     timeout: 100,
     method: 'get',
     response: () => {
       return {
         code: 0,
-        data: accountList,
+        data: templateList,
         message: 'ok'
       };
     }
