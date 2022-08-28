@@ -9,7 +9,6 @@
 
 html,
 body {
-  overflow: hidden;
   margin: 0;
   width: 100vw;
   min-height: 100vh;
@@ -70,10 +69,10 @@ textarea {
   resize: none;
 }
 
-/* @font-face {
-  font-family: 'PingFangSC-Regular';
-  src: url('/src/assets/fonts/PingFang\ SC.ttf');
-} */
+@font-face {
+  font-family: 'Alibaba PuHuiTi';
+  src: url('/src/assets/fonts/Alibaba-PuHuiTi-M.woff');
+}
 
 ul,
 li {
@@ -92,32 +91,4 @@ li {
   -ms-filter: blur(15px);
   filter: url(blur.svg#blur);
   filter: blur(15px);
-}
-
-@media only screen and (device-height: 568px) {
-  html,
-  body {
-    min-height: 568px;
-  }
-}
-
-@media only screen and (device-height: 736px) {
-  html,
-  body {
-    min-height: 736px;
-  }
-}
-
-@media only screen and (device-height: 812px) {
-  html,
-  body {
-    min-height: 812px;
-  }
-}
-
-@media only screen and (device-height: 896px) {
-  html,
-  body {
-    min-height: 896px;
-  }
 }

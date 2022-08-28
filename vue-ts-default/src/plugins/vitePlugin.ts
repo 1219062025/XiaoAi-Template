@@ -5,7 +5,7 @@ import WindiCSS from 'vite-plugin-windicss';
 import progress from 'vite-plugin-progress';
 import { viteVConsole } from 'vite-plugin-vconsole';
 
-const path = require('path');
+import path from 'path';
 
 // EJS模板能力
 export function configHtmlPlugin(env: ImportMetaEnv) {

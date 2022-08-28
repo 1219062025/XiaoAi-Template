@@ -3,7 +3,7 @@ import { defineConfig, loadEnv, ConfigEnv } from 'vite';
 import { setupPlugin } from './src/plugins';
 import px2viewport from 'cnjm-postcss-px-to-viewport';
 
-const path = require('path');
+import path from 'path';
 
 export default ({ mode, command }: ConfigEnv) => {
   const env = loadEnv(mode, process.cwd()) as ImportMetaEnv;
@@ -12,7 +12,7 @@ export default ({ mode, command }: ConfigEnv) => {
     base: './',
     build: {
       // 打包兼容低版本
-      target: ['es2015']
+      target: ['chrome52']
       // cssTarget: ['chrome52']
     },
     resolve: {
