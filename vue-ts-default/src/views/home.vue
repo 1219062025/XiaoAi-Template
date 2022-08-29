@@ -52,30 +52,50 @@
         <div class="absolute top-0 left-[137px]">主播</div>
         <div class="absolute top-0 left-[521px]">里程碑</div>
       </div>
-      <div class="rank-area w-full min-h-[680px] mt-[23px] px-[14px]">
-        <div
-          v-for="(item, index) in 4"
-          :key="index"
-          class="flex-y-center justify-between w-full h-[123px] border-b border-b-[#B7C9FD] border-solid last:border-none">
-          <div class="font-Alibaba"></div>
-        </div>
+      <div class="rank-area w-full min-h-[680px] mt-[23px] px-[14px] pb-[9px]">
+        <transition-group appear tag="div" name="fadeAn">
+          <div
+            v-for="(item, index) in currentRankData.slice(0, endRanking)"
+            :key="index"
+            class="flex-y-center justify-between w-full h-[123px] border-b border-b-[#B7C9FD] border-solid last:border-none">
+            <!-- 排名 -->
+            <svg width="40" height="25" class="inline-block ml-[10px] italic font-Alibaba">
+              <defs>
+                <linearGradient id="ranking" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" style="stop-color: #3e49d6" />
+                  <stop offset="1" style="stop-color: #6c98fe" />
+                </linearGradient>
+              </defs>
+              <text class="text" text-anchor="middle" x="50%" y="50%">{{ index + 1 }}</text>
+            </svg>
+            <!-- 主播信息 -->
+            <div class="flex-y-center flex-1 ml-[25px]">
+              <div class="flex-center flex-shrink-0 w-[80px] h-[80px] linear-3F4BD7-6993FB rounded-[50%]">
+                <div class="w-[76px] h-[76px] rounded-[50%] bg-[#000]"></div>
+              </div>
+              <div class="w-[270px] text-[30px] text-[#4453DB] ml-[12px] single-ellipsis">我的名字有8个字</div>
+            </div>
+            <!-- 分数 -->
+            <div class="w-[120px] text-center text-[28px] text-[#CB52EE] leading-[initial] whitespace-nowrap">
+              10000067
+            </div>
+          </div>
+        </transition-group>
+        <img
+          v-if="endRanking < currentRankData.length"
+          class="w-[97px] h-[41px] mx-auto mt-[12px]"
+          src="@/assets/images/more_btn.png"
+          @click="endRanking = currentRankData.length" />
       </div>
     </div>
   </div>
-  <svg>
-    <defs>
-      <linearGradient id="ranking" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" style="stop-color: #3e49d6" />
-        <stop offset="1" style="stop-color: #6c98fe" />
-      </linearGradient>
-    </defs>
-    <text text-anchor="middle" x="50%" y="50%">1</text>
-  </svg>
 </template>
 
 <script setup lang="ts">
   import { getAssetsImages } from '@/utils';
 
+  const currentRankData = reactive(new Array(25).fill(1));
+  const endRanking = ref(20);
   const rankType = ref(1); // 当前榜单 1-月之征途 2-飞船争霸 3-月之守护
   watch(rankType, (val) => {
     // console.log(val);
@@ -103,15 +123,47 @@
 
     .rank-bg-area {
       background: url('@/assets/images/rank_bg_top.png') no-repeat center top/690px 417px,
-        url('@/assets/images/rank_bg_main.png') no-repeat center 417px/690px calc(100% - 567px),
+        url('@/assets/images/rank_bg_main.png') no-repeat center 416px/690px calc(100% - 563px),
         url('@/assets/images/rank_bg_footer.png') no-repeat center bottom/690px 150px;
     }
 
     .rank-area {
       border-radius: 20px;
       background: url('@/assets/images/rank_top.png') no-repeat center top/652px 183px,
-        url('@/assets/images/rank_main.png') no-repeat center 183px/652px calc(100% - 304px),
+        url('@/assets/images/rank_main.png') no-repeat center 182px/652px calc(100% - 300px),
         url('@/assets/images/rank_footer.png') no-repeat center bottom/652px 121px;
+
+      .linear-3F4BD7-6993FB {
+        background: linear-gradient(0deg, #3f4bd7, #6993fb);
+      }
+
+      .text {
+        text-anchor: middle;
+        dominant-baseline: middle;
+        fill: url(#ranking);
+      }
+    }
+
+    .fadeAn-enter-from {
+      padding-bottom: 53px;
+      height: 0 !important;
+      opacity: 0;
+    }
+
+    .fadeAn-leave-to {
+      padding-bottom: 0;
+      opacity: 1;
+    }
+
+    .fadeAn-enter-active,
+    .fadeAn-leave-active {
+      transition-duration: 0.3s;
+    }
+
+    .fadeAn-enter-to,
+    .fadeAn-leave-from {
+      padding-bottom: 53px;
+      opacity: 1;
     }
   }
 </style>
