@@ -1,5 +1,10 @@
 <template>
   <div id="home">
+    <!-- 燃力补给按钮 -->
+    <img
+      src="@/assets/images/dialog_btn.png"
+      class="fixed w-[121px] h-[113px] top-[232px] right-[12px] click-active"
+      @click="dailyTaskShow = true" />
     <!-- 主播与用户头像框 -->
     <div class="flex-center pt-[343px]">
       <div class="flex-y-center flex-col mr-[23px]">
@@ -89,17 +94,100 @@
       </div>
     </div>
   </div>
+
+  <!-- 燃力补给弹窗 -->
+  <van-overlay :show="dailyTaskShow" z-index="99" @click.self="dailyTaskShow = false">
+    <div class="position-center w-full">
+      <img src="@/assets/images/dialog_title.png" class="w-[572px] h-[109px] mx-auto mb-[15px]" />
+      <div
+        class="relative w-[665px] h-[494px] pt-[51px] mx-auto bg-cover-center"
+        :style="{ backgroundImage: `url(${getAssetsImages('dialog_bg')})` }">
+        <!-- 每日0点刷新 -->
+        <div class="absolute top-[13px] right-[43px] text-[24px] text-[#99D6EF] font-Alibaba">每日0点刷新</div>
+        <!-- 任务列表区域 -->
+        <div class="w-full px-[24px]">
+          <div
+            class="flex justify-between pl-[21px] pr-[7px] w-[617px] h-[119px] bg-[#CAE5FF] rounded-[15px] box-shadow-4A64D5 mb-[25px]">
+            <img src="@/assets/images/user_icon.png" class="flex-shrink-0 self-center w-[70px] h-[79px] mr-[16px]" />
+            <div class="flex-1 mt-[19px]">
+              <div class="font-Alibaba text-[28px]">
+                <span class="text-[#342DB5] mr-[15px]">每日登陆</span>
+                <span class="text-[#B066DF]">0/1</span>
+              </div>
+              <div class="flex items-end mt-[16px] font-Alibaba">
+                <div class="w-[35px] h-[35px] bg-[#C1C8FF] rounded-[5px] mr-[4px]"></div>
+                <span class="text-[24px] text-[#5F70F6]">爱妮城堡*1</span>
+              </div>
+            </div>
+            <div
+              class="w-[146px] h-[74px] mt-[15px] bg-cover-center"
+              :style="{ backgroundImage: `url(${getAssetsImages('complete_btn')})` }"></div>
+          </div>
+          <div
+            class="flex justify-between pl-[21px] pr-[7px] w-[617px] h-[119px] bg-[#CAE5FF] rounded-[15px] box-shadow-4A64D5 mb-[25px]">
+            <img src="@/assets/images/live_icon.png" class="flex-shrink-0 self-center w-[66px] h-[78px] mr-[18px]" />
+            <div class="flex-1 mt-[19px]">
+              <div class="font-Alibaba text-[28px]">
+                <span class="text-[#342DB5] mr-[15px]">观看直播10分钟</span>
+                <span class="text-[#B066DF]">0/10</span>
+              </div>
+              <div class="flex items-end mt-[16px] font-Alibaba">
+                <div class="w-[35px] h-[35px] bg-[#C1C8FF] rounded-[5px] mr-[4px]"></div>
+                <span class="text-[24px] text-[#5F70F6]">爱妮城堡*1</span>
+              </div>
+            </div>
+            <div
+              class="w-[146px] h-[74px] mt-[15px] bg-cover-center"
+              :style="{ backgroundImage: `url(${getAssetsImages('toComplete_btn')})` }"></div>
+          </div>
+          <div
+            class="flex justify-between pl-[19px] pr-[7px] w-[617px] h-[119px] bg-[#CAE5FF] rounded-[15px] box-shadow-4A64D5">
+            <img src="@/assets/images/barrage_icon.png" class="flex-shrink-0 self-center w-[72px] h-[61px] mr-[14px]" />
+            <div class="flex-1 mt-[19px]">
+              <div class="font-Alibaba text-[28px]">
+                <span class="text-[#342DB5] mr-[15px]">发送10条弹幕</span>
+                <span class="text-[#B066DF]">0/10</span>
+              </div>
+              <div class="flex items-end mt-[16px] font-Alibaba">
+                <div class="w-[35px] h-[35px] bg-[#C1C8FF] rounded-[5px] mr-[4px]"></div>
+                <span class="text-[24px] text-[#5F70F6]">爱妮城堡*1</span>
+              </div>
+            </div>
+            <div
+              class="w-[146px] h-[74px] mt-[15px] bg-cover-center"
+              :style="{ backgroundImage: `url(${getAssetsImages('completed_btn')})` }"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </van-overlay>
+
+  <!-- 奖励弹窗 -->
+  <van-overlay :show="awardShow" z-index="99" @click.self="awardShow = false">
+    <div
+      class="position-center w-[400px] h-[399px] pt-[87px] bg-[#CAE5FF] rounded-[30px] border-[3px] border-solid border-[#6F86EA]">
+      <img src="@/assets/images/award_dialog_title.png" class="position-x-center w-[542px] h-[231px] top-[-192px]" />
+      <div class="w-[129px] h-[129px] bg-[#C1C8FF] rounded-[20px]"></div>
+    </div>
+  </van-overlay>
 </template>
 
 <script setup lang="ts">
   import { getAssetsImages } from '@/utils';
 
-  const currentRankData = reactive(new Array(25).fill(1));
-  const endRanking = ref(20);
+  //#region 榜单逻辑
+  const currentRankData = reactive(new Array(25).fill(1)); // 榜单数据
+  const endRanking = ref(20); // 榜单显示数据量
   const rankType = ref(1); // 当前榜单 1-月之征途 2-飞船争霸 3-月之守护
   watch(rankType, (val) => {
     // console.log(val);
   });
+  //#endregion
+
+  //#region 弹窗逻辑
+  const dailyTaskShow = ref(false); // 燃力补给弹窗是否显示
+  const awardShow = ref(true); // 奖励弹窗是否显示
+  //#endregion
 </script>
 
 <style scoped lang="scss">
@@ -119,6 +207,10 @@
         rgba(49, 123, 207, 0.99) 46%,
         rgba(49, 123, 207, 0) 100%
       );
+    }
+
+    .box-shadow-4A64D5 {
+      box-shadow: 0 2px 10px 0 #4a64d5;
     }
 
     .rank-bg-area {
