@@ -70,10 +70,10 @@ textarea {
   resize: none;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Alibaba PuHuiTi';
   src: url('/src/assets/fonts/Alibaba-PuHuiTi-M.woff');
-}
+} */
 
 ul,
 li {
