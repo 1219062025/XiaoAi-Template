@@ -25,6 +25,7 @@
 	|- components.d.ts // 自动导入的组件声明文件
 	|- env.d.ts // 全局环境声明文件
 	|- global.d.ts // 全局包声明文件
+  |- index.d.ts // 变量类型声明文件
 |- .env // 全局环境变量
 |- .env.porduction // 生产环境变量
 |- .eslintrc-auto-import.json // eslint对自动导入的配置
@@ -73,7 +74,13 @@
 
 `register-service-worker`：缓存服务
 
+`vant`: 第三方组件库
+
 `vconsole`：针对手机端的开发调试工具
+
+`vue`: vue3 框架
+
+`vue`: vue 路由
 
 ### devDependencies 依赖
 
@@ -118,6 +125,8 @@
 `unplugin-auto-import`： 自动导入`API`
 
 `unplugin-vue-components`：自动导入组件
+
+`vite`: vite 打包工具
 
 `vite-plugin-html`：`EJS`模板能力，多页应用支持，自定义`entry`，自定义`template`
 
