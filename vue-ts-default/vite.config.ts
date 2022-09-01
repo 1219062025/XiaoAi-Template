@@ -12,7 +12,7 @@ export default ({ mode, command }: ConfigEnv) => {
     base: './',
     build: {
       // 打包兼容低版本
-      target: ['chrome52']
+      target: ['es2015']
       // cssTarget: ['chrome52']
     },
     resolve: {

@@ -28,9 +28,9 @@ export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
     })
   ];
 
-  if (env.VITE_NODE_ENV === 'production') {
-    vitePlugins.push(configLegacyPlugin());
-  }
+  // if (env.VITE_NODE_ENV === 'production') {
+  vitePlugins.push(configLegacyPlugin());
+  // }
 
   return vitePlugins;
 }
