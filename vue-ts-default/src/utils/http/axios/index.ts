@@ -85,7 +85,8 @@ export class HttpRequest {
   }
 
   public post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<Result<T>> {
-    return this.instance.post(url, data, config);
+    const path = `${isTestEnv ? this.testHost : this.host}${url}`;
+    return this.instance.post(path, data, config);
   }
 
   // 第三方接口或者mock用
