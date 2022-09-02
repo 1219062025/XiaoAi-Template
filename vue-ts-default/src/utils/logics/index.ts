@@ -2,6 +2,7 @@ import type { App } from 'vue';
 import { clientBridge } from './clientBridge';
 import { registerServiceWorker } from './registerServiceWorker';
 import { fastClick } from './fastClick';
+import './inobounce.js';
 // import { alifeLogger } from './alifeLogger';
 
 // 定义了全局方法之后需要扩充类型

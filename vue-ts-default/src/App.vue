@@ -8,7 +8,10 @@
 
 <style>
   #app {
+    overflow: auto;
+    height: 100%;
     font-family: 'Adobe Heiti Std R', Helvetica, Arial, sans-serif;
+    -webkit-overflow-scrolling: touch;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
