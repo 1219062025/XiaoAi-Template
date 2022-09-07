@@ -1,7 +1,6 @@
 import type { App } from 'vue';
 import { clientBridge } from './clientBridge';
 import { registerServiceWorker } from './registerServiceWorker';
-import { fastClick } from './fastClick';
 import './inobounce.js';
 // import { alifeLogger } from './alifeLogger';
 
@@ -17,7 +16,6 @@ declare module '@vue/runtime-core' {
 export function init(app: App<Element>) {
   clientBridge();
   registerServiceWorker();
-  fastClick();
   // alifeLogger();
 
   app.config.globalProperties.$filters = {

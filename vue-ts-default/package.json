@@ -15,7 +15,6 @@
     "alife-logger": "^1.8.16",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
-    "fastclick": "^1.0.6",
     "pinia": "^2.0.16",
     "register-service-worker": "^1.7.2",
     "vant": "^3.5.2",
