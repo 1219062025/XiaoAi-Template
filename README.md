@@ -17,14 +17,14 @@
   |- router // 路由相关
   |- store // 状态管理相关
   |- utils // 方法、工具
-  |- views // 视图
+  |- views // 视图、页面
   |- App.vue
   |- main.ts
 |- types // 类型声明文件夹
-	|- auto-imports.d.ts // 自动导入的API声明文件
-	|- components.d.ts // 自动导入的组件声明文件
-	|- env.d.ts // 全局环境声明文件
-	|- global.d.ts // 全局包声明文件
+  |- auto-imports.d.ts // 自动导入的API声明文件
+  |- components.d.ts // 自动导入的组件声明文件
+  |- env.d.ts // 全局环境声明文件
+  |- global.d.ts // 全局包声明文件
   |- index.d.ts // 变量类型声明文件
 |- .env // 全局环境变量
 |- .env.porduction // 生产环境变量
@@ -68,8 +68,6 @@
 
 `dayjs`：便捷操纵`Date`对象
 
-`fastclick`： 解决移动端浏览器 300ms 点击延迟和点击穿透问题
-
 `pinia`：状态管理
 
 `register-service-worker`：缓存服务
@@ -92,7 +90,11 @@
 
 `@vitejs/plugin-legacy`：`vite`打包兼容低版本浏览器
 
+`@vitejs/plugin-vue`：`vue`单文件组件支持
+
 `cnjm-postcss-px-to-viewport`： 自动将`px`转化成`vw`库，本体是`postcss-px-to-viewport`，目前安装的包是个人开发者在本体上修改了部分源代码已适配不同设计稿
+
+`cross-env`：控制环境变量
 
 `eslint`：代码格式校验
 
@@ -122,6 +124,8 @@
 
 `stylelint-scss`^3.21.0：`stylelint` 适配 `scss` 预处理语法的插件
 
+`typescript`：`ts`支持
+
 `unplugin-auto-import`： 自动导入`API`
 
 `unplugin-vue-components`：自动导入组件
@@ -137,5 +141,7 @@
 `vite-plugin-windicss`：辅助`windicss`在`vite`上的使用
 
 `vite-plugin-mock`：`vite`的一个`mock`插件，基于`mockjs`开发。并同时支持本地环境和生产环境。本地使用`connect`服务中间件，在线使用`mockjs`
+
+`vue-tsc`：基于 `IDE` 插件`Volar`的 `Vue 3` 命令行类型检查工具。
 
 `windicss`：原子`css`，支持在`html`元素上通过定制好的类名来快速实现样式，而不需要自己去定义类名
