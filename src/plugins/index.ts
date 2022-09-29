@@ -23,14 +23,11 @@ export function setupPlugin(env: ImportMetaEnv, command: 'serve' | 'build') {
     configVConsolePlugin(env, command),
     configAutoImportPlugin(),
     configAutoComponentsPlugin(),
+    configLegacyPlugin(),
     visualizer({
       gzipSize: true
     })
   ];
-
-  if (env.VITE_NODE_ENV === 'production') {
-    vitePlugins.push(configLegacyPlugin());
-  }
 
   return vitePlugins;
 }
